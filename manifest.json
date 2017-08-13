@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "version": "0.1",
+  "name": "Overlay Blocker",
+  "description": "Attempts to block annoying overlays, like ads and newsletter sign-up forms, from interrupting your browsing.",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentscript.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
