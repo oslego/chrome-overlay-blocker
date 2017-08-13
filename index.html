@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+  .overlay{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: red;
+  }
+
+  .login{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: royalblue;
+  }
+
+  .visible{
+    display: block;
+  }
+
+  </style>
+  <title>Test Overlay Blocker</title>
+
+</head>
+<body>
+  <p>Test page for Overlay Blocker. It works if there isn't a big red element below.</p>
+  <button id="login">Show an expected overlay</button>
+  <div class="login">This is an expected overaly. It shouldn't be removed.</div>
+  <div class="overlay"></div>
+
+  <script>
+
+  // This shows and overlay soon after the page loads.
+  // It should be blocked.
+  window.setTimeout(() => {
+    document.querySelector('.overlay').classList.add('visible')
+  }, 150)
+
+
+  // This shows an overlay as a result of user interaction.
+  // It should not be blocked.
+  document.addEventListener('click', e =>{
+    if (e.target.id == 'login'){
+      document.querySelector('.login').classList.add('visible')
+    }
+  })
+  </script>
+
+
+</body>
+</html>
